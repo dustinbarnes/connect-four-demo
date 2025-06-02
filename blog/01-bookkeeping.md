@@ -15,3 +15,5 @@ Each time we push a new file in the blog/ directory, I want to tag the repositor
 This is a relatively straightforward GitHub Action. To that end, I have created [this action](../.github/workflows/tag-blog-file.yml). 
 
 Committing this file will be the first test. 
+
+In true development fashion, the first test failed. The action did not have permissions to write the tags back to the repository. I've updated those permissions, and now the tags are working well. 
