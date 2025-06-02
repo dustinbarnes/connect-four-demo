@@ -1,0 +1,34 @@
+name: Tag Blog File
+
+on:
+  push:
+    paths:
+      - 'blog/**'
+
+jobs:
+  tag-on-new-blog-file:
+    runs-on: ubuntu-latest
+    if: github.event.commits != null
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get new blog files
+        id: newfiles
+        run: |
+          git fetch origin ${{ github.event.before }}
+          git diff --name-status ${{ github.event.before }} ${{ github.sha }} | awk '/^A\tblog\// {print $2}' > newfiles.txt
+          cat newfiles.txt
+
+      - name: Tag for each new file
+        if: success() && steps.newfiles.outputs != ''
+        run: |
+          while read file; do
+            [ -z "$file" ] && continue
+            filename=$(basename "$file")
+            tagname="${filename%.*}"
+            git tag "$tagname"
+            git push origin "$tagname"
+          done < newfiles.txt
