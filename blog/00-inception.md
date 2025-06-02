@@ -12,4 +12,4 @@ We will define our HTTP endpoints, core DTOs, and message objects with an OpenAP
 
 ## Future Plans
 
-The point of this project is to highlight work efforts, so I expect that some major things will change. The only real plan is to follow this effort where it takes me, and to document the process along the way. 
+The point of this project is to highlight work efforts, so I expect that some major things will change. The only real plan is to follow this effort where it takes me, and to document the process along the way.

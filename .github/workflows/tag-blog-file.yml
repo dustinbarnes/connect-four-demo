@@ -18,20 +18,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get new blog files
-        id: newfiles
+      - name: Get changed blog files (added or modified)
+        id: changedfiles
         run: |
           git fetch origin ${{ github.event.before }}
-          git diff --name-status ${{ github.event.before }} ${{ github.sha }} | awk '/^A\tblog\// {print $2}' > newfiles.txt
-          cat newfiles.txt
+          git diff --name-status ${{ github.event.before }} ${{ github.sha }} | awk '/^[AM]\tblog\// {print $2}' > changedfiles.txt
+          cat changedfiles.txt
 
-      - name: Tag for each new file
-        if: success() && steps.newfiles.outputs != ''
+      - name: Tag for each changed file (force update)
         run: |
           while read file; do
             [ -z "$file" ] && continue
             filename=$(basename "$file")
             tagname="${filename%.*}"
-            git tag "$tagname"
-            git push origin "$tagname"
-          done < newfiles.txt
+            git tag -f "$tagname"
+            git push -f origin "$tagname"
+          done < changedfiles.txt
