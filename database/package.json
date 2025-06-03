@@ -1,0 +1,9 @@
+{
+  "name": "database",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "atlas schema apply --url \"sqlite://dev.db\" --to file://schema.hcl"
+  },
+  "devDependencies": {}
+}
