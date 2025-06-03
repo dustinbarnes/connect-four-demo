@@ -1,5 +1,7 @@
 {
     "yaml.schemas": {
         "https://spec.openapis.org/oas/3.1/schema/2022-10-07": "openapi/auth.yaml"
-    }
+    },
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.configuration.updateBuildConfiguration": "automatic"
 }

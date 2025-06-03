@@ -6,6 +6,8 @@ paths:
   /auth/register:
     post:
       summary: Register a new user
+      tags:
+        - Auth
       requestBody:
         required: true
         content:
@@ -22,6 +24,8 @@ paths:
   /auth/login:
     post:
       summary: User login
+      tags:
+        - Auth
       requestBody:
         required: true
         content:
