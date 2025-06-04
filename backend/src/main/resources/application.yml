@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: backend
+  datasource:
+    url: jdbc:sqlite:../../../database/dev.db
+    driver-class-name: org.sqlite.JDBC
