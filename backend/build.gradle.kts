@@ -21,7 +21,8 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.jooq:jooq:3.20.0")
+	implementation("org.springframework.boot:spring-boot-starter-jooq")
+	implementation("org.jooq:jooq:3.20.4")
 	implementation("org.xerial:sqlite-jdbc:3.45.3.0")
 	implementation("io.swagger.core.v3:swagger-annotations:2.2.22")
 	implementation("jakarta.validation:jakarta.validation-api:3.0.2")
@@ -44,11 +45,28 @@ openApiGenerate {
 		"useTags" to "true",
 		"dateLibrary" to "java8",
 		"useSpringBoot3" to "true",
-		"generateSpringSecurity" to "true",
+		"generateSpringSecurity" to "true"
 	))
 }
 sourceSets["main"].java.srcDir(layout.buildDirectory.dir("generated/openapi/src/main/java"))
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+	jvmArgs("--enable-preview")
+}
+
+tasks.withType<JavaCompile> {
+    options.compilerArgs.add("--enable-preview")
+}
+
+tasks.withType<JavaExec> {
+    jvmArgs("--enable-preview")
+}
+
+tasks.named<org.springframework.boot.gradle.tasks.run.BootRun>("bootRun") {
+    jvmArgs("--enable-preview")
+}
+
+tasks.named("compileJava") {
+    dependsOn(tasks.named("openApiGenerate"))
 }

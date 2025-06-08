@@ -1,7 +1,0 @@
-package com.github.dustinbarnes.connect_four_demo.backend.controller;
-
-import org.springframework.web.bind.annotation.RestController;
-
-public class AuthController implements AuthApi{
-
-}

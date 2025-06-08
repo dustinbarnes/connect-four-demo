@@ -1,0 +1,36 @@
+package com.github.dustinbarnes.connect_four_demo.backend.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+@Configuration
+public class SecurityConfig {
+    private final TokenAuthFilter tokenAuthFilter;
+
+    public SecurityConfig(TokenAuthFilter jwtAuthFilter) {
+        this.tokenAuthFilter = jwtAuthFilter;
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(authz -> authz
+                .requestMatchers("/auth/register", "/auth/login").permitAll()
+                .requestMatchers("/auth/is-logged-in").authenticated()
+                .anyRequest().authenticated()
+            )
+            .addFilterBefore(tokenAuthFilter, UsernamePasswordAuthenticationFilter.class)
+            .exceptionHandling((exh) -> {
+                exh.authenticationEntryPoint((request, response, authException) -> {
+                    response.sendError(HttpStatus.UNAUTHORIZED.value(), "Unauthorized");
+                });
+            });
+        return http.build();
+    }
+}

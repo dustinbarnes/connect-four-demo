@@ -1,10 +1,8 @@
 spring:
-  application:
-    name: backend
   datasource:
     url: jdbc:sqlite:../database/dev.db
     driver-class-name: org.sqlite.JDBC
-  security:    
+  security:
     jwt:
       secret: mysecretkey
       expiration: 3600 # in seconds
