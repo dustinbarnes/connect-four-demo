@@ -3,7 +3,7 @@ package com.github.dustinbarnes.connect_four_demo.backend.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
+
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -27,7 +27,9 @@ public class SecurityConfig {
             )
             .addFilterBefore(tokenAuthFilter, UsernamePasswordAuthenticationFilter.class)
             .exceptionHandling((exh) -> {
-                exh.authenticationEntryPoint((request, response, authException) -> {
+                // By default, Spring Security will send a 403 Forbidden response
+                // for unauthorized access. I much prefer the 401 here. 
+                exh.authenticationEntryPoint((_, response, _) -> {
                     response.sendError(HttpStatus.UNAUTHORIZED.value(), "Unauthorized");
                 });
             });

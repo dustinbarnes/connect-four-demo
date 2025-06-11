@@ -6,5 +6,5 @@ spring:
     driver-class-name: org.sqlite.JDBC
   security:    
     jwt:
-      secret: mysecretkey
-      expiration: 3600 # in seconds
+      secret: "this_is_a_very_long_yet_insecure_jwt_secret_123!"
+      expiration: 3600000

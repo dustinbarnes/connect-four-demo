@@ -13,11 +13,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final JwtService jwtService;
 
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, JwtService jwtService) {
         this.userRepository = userRepository;
+        this.jwtService = jwtService;   
     }
 
     public Optional<UserEntity> findByUsername(String username) {
@@ -43,17 +45,13 @@ public class UserService {
     public Optional<LoginResponse> login(AuthRequest authRequest) {
         Optional<UserEntity> user = userRepository.findByUsername(authRequest.getUsername());
         if (user.isEmpty() || !passwordEncoder.matches(authRequest.getPassword(), user.get().getPasswordHash())) {
-            return Optional.empty(); // Invalid credentials
+            return Optional.empty();
         }
 
         return Optional.of(new LoginResponse(generateToken(user.get())));
     }
 
-    public String generateToken(UserEntity user) {
-        return "token-for-" + user.getUsername();
-    }
-
-    public boolean isTokenValid(String token) {
-        return token != null && token.startsWith("token-for-"); 
+    private String generateToken(UserEntity user) {
+        return jwtService.generateToken(user);
     }
 }

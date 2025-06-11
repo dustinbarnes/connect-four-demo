@@ -4,5 +4,5 @@ spring:
     driver-class-name: org.sqlite.JDBC
   security:
     jwt:
-      secret: mysecretkey
-      expiration: 3600 # in seconds
+      secret: "testsecretkeymustbeatleast32byteslong!!"
+      expiration: 3600000
