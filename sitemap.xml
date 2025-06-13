@@ -2,34 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://dustinbarnes.github.io/connect-four-demo/</loc>
-         <lastmod>2025-06-11</lastmod>
+         <lastmod>2025-06-13</lastmod>
     </url>
     <url>
          <loc>https://dustinbarnes.github.io/connect-four-demo/00-inception/</loc>
-         <lastmod>2025-06-11</lastmod>
+         <lastmod>2025-06-13</lastmod>
     </url>
     <url>
          <loc>https://dustinbarnes.github.io/connect-four-demo/01-bookkeeping/</loc>
-         <lastmod>2025-06-11</lastmod>
+         <lastmod>2025-06-13</lastmod>
     </url>
     <url>
          <loc>https://dustinbarnes.github.io/connect-four-demo/02-authentication-api/</loc>
-         <lastmod>2025-06-11</lastmod>
+         <lastmod>2025-06-13</lastmod>
     </url>
     <url>
          <loc>https://dustinbarnes.github.io/connect-four-demo/03-yak-shaving/</loc>
-         <lastmod>2025-06-11</lastmod>
+         <lastmod>2025-06-13</lastmod>
     </url>
     <url>
          <loc>https://dustinbarnes.github.io/connect-four-demo/04-authentication-backend/</loc>
-         <lastmod>2025-06-11</lastmod>
+         <lastmod>2025-06-13</lastmod>
     </url>
     <url>
          <loc>https://dustinbarnes.github.io/connect-four-demo/05-authentication-service/</loc>
-         <lastmod>2025-06-11</lastmod>
+         <lastmod>2025-06-13</lastmod>
     </url>
     <url>
          <loc>https://dustinbarnes.github.io/connect-four-demo/06-yak-shaving-redux/</loc>
-         <lastmod>2025-06-11</lastmod>
+         <lastmod>2025-06-13</lastmod>
     </url>
 </urlset>
