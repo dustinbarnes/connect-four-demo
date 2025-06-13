@@ -1,4 +1,4 @@
-name: Tag Blog File
+name: Update Blog
 
 permissions:
   contents: write
@@ -6,9 +6,34 @@ permissions:
 on:
   push:
     paths:
-      - 'blog/**'
+      - blog/**
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
+  publish-blog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
+
+      - uses: actions/cache@v4
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: .cache 
+          restore-keys: |
+            mkdocs-material-
+      - run: pip install mkdocs-material 
+      - run: mkdocs gh-deploy --force
+
   tag-on-new-blog-file:
     runs-on: ubuntu-latest
     if: github.event.commits != null

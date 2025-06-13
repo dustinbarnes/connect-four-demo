@@ -1,0 +1,7 @@
+site_name: Connect Four Demo
+site_url: https://dustinbarnes.github.io/connect-four-demo
+docs_dir: blog
+theme:
+  name: material
+  palette:
+    scheme: slate
