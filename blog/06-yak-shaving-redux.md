@@ -1,4 +1,4 @@
-# Yak Shaving Redux
+# 06: Yak Shaving Redux
 
 Our next step in building this slice of authentication functionality is to have our frontend use it. That presents a challenge, as we don't actually have a frontend yet. Instead of starting from scratch, let's take advantage of some of the wonderful design work that others have released. Some basic parameters: 
 

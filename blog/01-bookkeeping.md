@@ -1,4 +1,4 @@
-# Bookkeeping
+# 01: Bookkeeping
 
 The point of this project is to highight a project, but also to tell a story. Software systems rarely exist in a vacuum, and a lot of the work in learning a new system is understanding how it came to be. 
 

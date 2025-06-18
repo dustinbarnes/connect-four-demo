@@ -1,4 +1,4 @@
-# Yak Shaving
+# 03: Yak Shaving
 
 I refer you to [this YouTube video](https://www.youtube.com/watch?v=CrJUhtHdGQ8), which features a clip from the TV show *Malcolm in the Middle*. In it, Hal has to change a light bulb but he keeps running into other things he has to do first, to the point that he's working on his car engine to replace the light bulb. 
 

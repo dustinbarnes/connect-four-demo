@@ -1,4 +1,4 @@
-# Authentication Backend
+# 04: Authentication Backend
 
 Now we're going to build the backend authentication endpoints. Let's get to it! 
 

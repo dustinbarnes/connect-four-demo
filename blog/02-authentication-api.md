@@ -1,4 +1,4 @@
-# Authentication API
+# 02: Authentication API
 
 We're going to start with Authentication. To keep the scope minimal for now, we're going to allow these flows: 
 
